@@ -1,0 +1,1816 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lê Thành Nhân | Digital Portfolio</title>
+    <!-- Google Fonts: Poppins (Heading) & Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome cho Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            /* Light Mode Colors */
+            --primary-color: #059669; /* Emerald Green */
+            --primary-hover: #047857;
+            --primary-light: #ecfdf5;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --header-bg: rgba(248, 250, 252, 0.8);
+            --gradient-1: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            --hero-bg-gradient: radial-gradient(circle at 10% 20%, rgba(5, 150, 105, 0.05) 0%, rgba(16, 185, 129, 0.02) 90.1%);
+            --transition-speed: 0.3s;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+
+        [data-theme="dark"] {
+            /* Dark Mode Colors */
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --header-bg: rgba(15, 23, 42, 0.8);
+            --primary-light: #064e3b;
+            --hero-bg-gradient: radial-gradient(circle at 10% 20%, rgba(5, 150, 105, 0.15) 0%, rgba(15, 23, 42, 0) 80%);
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.5);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all var(--transition-speed) ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            font-size: 0.95rem;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background: var(--gradient-1);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -10px var(--primary-color);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--border-color);
+            transform: translateY(-2px);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-title {
+            font-size: 2.25rem;
+            color: var(--text-color);
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--gradient-1);
+            border-radius: 2px;
+        }
+
+        .section-desc {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1rem;
+        }
+
+        section {
+            padding: 6rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: transparent;
+            border-bottom: 1px solid transparent;
+            transition: all var(--transition-speed) ease;
+        }
+
+        header.sticky {
+            background-color: var(--header-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+            transition: height var(--transition-speed) ease;
+        }
+
+        header.sticky .nav-wrapper {
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--text-muted);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-1);
+            transition: width var(--transition-speed) ease;
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .theme-toggle-btn {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.25rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--border-color);
+            transition: all var(--transition-speed) ease;
+        }
+
+        .theme-toggle-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .theme-toggle-btn .fa-sun {
+            display: none;
+        }
+
+        [data-theme="dark"] .theme-toggle-btn .fa-moon {
+            display: none;
+        }
+
+        [data-theme="dark"] .theme-toggle-btn .fa-sun {
+            display: block;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            cursor: pointer;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: var(--hero-bg-gradient);
+            padding-top: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, rgba(255,255,255,0) 70%);
+            top: -200px;
+            right: -100px;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .hero-content {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 1s forwards ease-out;
+        }
+
+        .badge-school {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(5, 150, 105, 0.2);
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title span {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-tagline {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            max-width: 550px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-socials {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .hero-socials span {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            transition: all var(--transition-speed) ease;
+        }
+
+        .social-link:hover {
+            color: white;
+            background: var(--gradient-1);
+            border-color: transparent;
+            transform: translateY(-3px);
+        }
+
+        .hero-image-container {
+            display: flex;
+            justify-content: center;
+            position: relative;
+            opacity: 0;
+            transform: scale(0.9);
+            animation: scaleIn 1s 0.2s forwards ease-out;
+        }
+
+        .image-wrapper {
+            position: relative;
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            padding: 10px;
+            background: var(--gradient-1);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 6px solid var(--card-bg);
+            background-color: var(--card-bg);
+        }
+
+        .tech-badge {
+            position: absolute;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 0.75rem 1.25rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            z-index: 5;
+        }
+
+        .tb-1 {
+            top: 20px;
+            left: -20px;
+            animation: float 4s infinite ease-in-out;
+        }
+
+        .tb-2 {
+            bottom: 30px;
+            right: -20px;
+            animation: float 4s 2s infinite ease-in-out;
+        }
+
+        .tb-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .tb-text {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.2;
+        }
+
+        .tb-text strong {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-color);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-info h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .about-info p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .about-contact-details {
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .contact-item i {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            background-color: var(--primary-light);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-meta span {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .contact-meta strong {
+            font-size: 0.9rem;
+            color: var(--text-color);
+            word-break: break-all;
+        }
+
+        .cards-goals {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .goal-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.75rem;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-speed) ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .goal-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .goal-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gradient-1);
+        }
+
+        .goal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .goal-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+
+        .goal-title i {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .counter-box {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .counter-box span {
+            font-size: 1.25rem;
+            margin-left: 2px;
+        }
+
+        .goal-body {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-align: justify;
+        }
+
+        .projects {
+            background-color: var(--card-bg);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all var(--transition-speed) ease;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-banner {
+            position: relative;
+            background: var(--gradient-1);
+            color: white;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+        }
+
+        .project-banner::before {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -50px;
+            right: -50px;
+        }
+
+        .project-number {
+            position: absolute;
+            top: 1rem;
+            left: 1.25rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            backdrop-filter: blur(5px);
+        }
+
+        .project-banner i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .project-banner h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .project-body {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .project-meta-task {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            text-align: justify;
+        }
+
+        .project-input-group {
+            margin-top: auto;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+        }
+
+        .input-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .input-title span {
+            font-weight: 400;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+        }
+
+        .project-link-box {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .project-url-input {
+            flex-grow: 1;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 0.375rem;
+            font-size: 0.85rem;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            transition: all var(--transition-speed) ease;
+        }
+
+        .project-url-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px var(--primary-light);
+        }
+
+        .btn-launch {
+            width: 38px;
+            height: 38px;
+            border-radius: 0.375rem;
+            border: none;
+            background: var(--gradient-1);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .btn-launch:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-launch:disabled {
+            background: var(--border-color);
+            color: var(--text-muted);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .summary {
+            background-color: var(--bg-color);
+            position: relative;
+        }
+
+        .summary-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            box-shadow: var(--shadow-lg);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .summary-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1.5rem;
+        }
+
+        .summary-badge-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            background-color: var(--primary-light);
+            width: 70px;
+            height: 70px;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+        }
+
+        .summary-header-text h3 {
+            font-size: 1.75rem;
+            color: var(--text-color);
+        }
+
+        .summary-header-text p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .summary-item {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 1.5rem;
+            background-color: var(--bg-color);
+            border-radius: 1rem;
+            border: 1px solid var(--border-color);
+            transition: all var(--transition-speed) ease;
+        }
+
+        .summary-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        .summary-item-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 600;
+            color: var(--text-color);
+            font-size: 1.1rem;
+        }
+
+        .summary-item-title i {
+            color: var(--primary-color);
+            font-size: 1.25rem;
+        }
+
+        .summary-item-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .summary-item-list li {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            padding-left: 1.25rem;
+            position: relative;
+            line-height: 1.4;
+            text-align: justify;
+        }
+
+        .summary-item-list li::before {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--primary-color);
+            font-size: 0.75rem;
+        }
+
+        .contact {
+            background-color: var(--card-bg);
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 4rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-info-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-info-panel h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info-panel p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .contact-channels-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .channel-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            transition: all var(--transition-speed) ease;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .channel-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--channel-color, var(--primary-color));
+        }
+
+        .channel-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            background: var(--channel-bg, var(--gradient-1));
+        }
+
+        .channel-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+            color: var(--text-color);
+        }
+
+        .channel-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .btn-channel {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.65rem 1.25rem;
+            border-radius: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: white;
+            background: var(--channel-bg, var(--gradient-1));
+            transition: all var(--transition-speed) ease;
+        }
+
+        .btn-channel:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Định nghĩa màu sắc thương hiệu cho từng kênh liên hệ */
+        .zalo-channel {
+            --channel-color: #0068ff;
+            --channel-bg: #0068ff;
+        }
+        .messenger-channel {
+            --channel-color: #0084FF;
+            --channel-bg: linear-gradient(135deg, #00B2FE 0%, #006AFF 50%, #9B26FF 100%);
+        }
+        .phone-channel {
+            --channel-color: #10B981;
+            --channel-bg: #10B981;
+        }
+        .email-channel {
+            --channel-color: #EF4444;
+            --channel-bg: #EF4444;
+        }
+
+        footer {
+            background-color: var(--bg-color);
+            padding: 3rem 0;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo span {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .footer-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-link {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .footer-link:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 1024px) {
+            .project-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .summary-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+                text-align: center;
+            }
+            .hero-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .hero-title {
+                font-size: 2.75rem;
+            }
+            .hero-tagline {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--card-bg);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 3rem;
+                gap: 2.5rem;
+                transition: left 0.4s ease;
+                z-index: 999;
+                border-top: 1px solid var(--border-color);
+            }
+            .nav-menu.active {
+                left: 0;
+            }
+            .nav-link {
+                font-size: 1.15rem;
+            }
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-channels-grid {
+                grid-template-columns: 1fr;
+            }
+            .summary-card {
+                padding: 1.5rem;
+            }
+            .summary-header {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+            .image-wrapper {
+                width: 300px;
+                height: 300px;
+            }
+            .tb-1 {
+                left: -10px;
+            }
+            .tb-2 {
+                right: -10px;
+            }
+        }
+    </style>
+</head>
+<body data-theme="light">
+
+    <!-- ==========================================
+       HEADER & NAVIGATION
+       ========================================== -->
+    <header id="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="#" class="logo">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span>UET-Portfolio</span>
+                </a>
+                
+                <nav class="nav-menu" id="nav-menu">
+                    <a href="#hero" class="nav-link active">Trang chủ</a>
+                    <a href="#about" class="nav-link">Về tôi</a>
+                    <a href="#projects" class="nav-link">Trang dự án</a>
+                    <a href="#summary" class="nav-link">Tổng kết</a>
+                    <a href="#contact" class="nav-link">Liên hệ</a>
+                </nav>
+
+                <div class="header-actions">
+                    <button class="theme-toggle-btn" id="theme-toggle" aria-label="Thay đổi giao diện">
+                        <i class="fa-solid fa-moon"></i>
+                        <i class="fa-solid fa-sun"></i>
+                    </button>
+                    <i class="fa-solid fa-bars menu-toggle" id="menu-toggle"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==========================================
+       HERO SECTION
+       ========================================== -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <div class="badge-school">
+                        <i class="fa-solid fa-university"></i>
+                        <span>UET - Đại học Công Nghệ - ĐHQGHN</span>
+                    </div>
+                    <h1 class="hero-title">Xin chào, mình là <br><span>Lê Thành Nhân</span></h1>
+                    <p class="hero-tagline">Sinh viên lớp UET.A11 chuyên ngành <strong>Mạng máy tính và Truyền Thông Dữ Liệu</strong>. Đam mê thiết kế hệ thống, hạ tầng mạng & ứng dụng Trí tuệ nhân tạo nâng cao năng suất.</p>
+                    
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-folder-open"></i> Xem dự án</a>
+                        <a href="#contact" class="btn btn-secondary"><i class="fa-solid fa-comments"></i> Trò chuyện ngay</a>
+                    </div>
+
+                    <div class="hero-socials">
+                        <span>KẾT NỐI:</span>
+                        <a href="https://github.com" target="_blank" class="social-link" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://linkedin.com" target="_blank" class="social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="mailto:nhan24092007az@gmail.com" class="social-link" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <div class="hero-image-container">
+                    <div class="image-wrapper">
+                        <img src="Kisara.png" alt="Lê Thành Nhân Profile" class="profile-img">
+                        <div class="tech-badge tb-1">
+                            <div class="tb-icon"><i class="fa-solid fa-network-wired"></i></div>
+                            <div class="tb-text">
+                                <strong>Mạng máy tính</strong>
+                                <span>Truyền thông dữ liệu</span>
+                            </div>
+                        </div>
+                        <div class="tech-badge tb-2">
+                            <div class="tb-icon"><i class="fa-solid fa-brain"></i></div>
+                            <div class="tb-text">
+                                <strong>AI & Technology</strong>
+                                <span>Kỷ nguyên số 4.0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+       ABOUT ME SECTION
+       ========================================== -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Về Tôi</h2>
+                <p class="section-desc">Tìm hiểu thêm về hành trình, thế mạnh và định hướng nghiên cứu công nghệ số của bản thân mình.</p>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-info">
+                    <h3>Giới thiệu bản thân</h3>
+                    <p>Mình là Lê Thành Nhân, sinh viên năm nhất lớp UET.A11, thuộc trường Đại học Công Nghệ - Đại học Quốc gia Hà Nội (UET). Với nền tảng đào tạo chuyên sâu về lĩnh vực Mạng máy tính và Truyền Thông Dữ Liệu, mình luôn bị thu hút bởi cách thức thế giới kết nối thông tin và vận hành mạng lưới Internet toàn cầu.</p>
+                    <p>Môn học "Nhập môn Công nghệ số và Ứng dụng Trí tuệ nhân tạo" đã trang bị cho mình tư duy số hóa hệ thống, làm chủ các công cụ hỗ trợ thông minh từ AI để giải quyết các vấn đề thực tiễn một cách năng suất và chuẩn mực nhất.</p>
+                    
+                    <div class="about-contact-details">
+                        <div class="contact-item">
+                            <i class="fa-solid fa-phone"></i>
+                            <div class="contact-meta">
+                                <span>Điện thoại</span>
+                                <strong>0394651078</strong>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fa-solid fa-envelope"></i>
+                            <div class="contact-meta">
+                                <span>Email</span>
+                                <strong>nhan24092007az@gmail.com</strong>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fa-solid fa-map-location-dot"></i>
+                            <div class="contact-meta">
+                                <span>Quê quán</span>
+                                <strong>Quảng Ninh, Việt Nam</strong>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fa-solid fa-user-tag"></i>
+                            <div class="contact-meta">
+                                <span>Niên khóa</span>
+                                <strong>K70 UET.A11</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cards-goals">
+                    <div class="goal-card">
+                        <div class="goal-header">
+                            <div class="goal-title">
+                                <i class="fa-solid fa-bullseye"></i>
+                                <span>Mục tiêu học tập</span>
+                            </div>
+                            <div class="counter-box" data-target="95">0<span>%</span></div>
+                        </div>
+                        <div class="goal-body">
+                            Nắm vững lý thuyết cơ sở ngành về cấu trúc mạng, giao thức truyền dẫn thông tin và tích hợp nhuần nhuyễn các kỹ năng xử lý dữ liệu thông minh trong mọi tác vụ học tập.
+                        </div>
+                    </div>
+
+                    <div class="goal-card">
+                        <div class="goal-header">
+                            <div class="goal-title">
+                                <i class="fa-solid fa-compass"></i>
+                                <span>Định hướng phát triển</span>
+                            </div>
+                            <div class="counter-box" data-target="100">0<span>%</span></div>
+                        </div>
+                        <div class="goal-body">
+                            Trở thành một Chuyên viên Quản trị Hệ thống Mạng hoặc Kỹ sư Giải pháp Đám mây tài năng, tiên phong ứng dụng Trí tuệ nhân tạo nhằm tối ưu bảo mật và tối đa hiệu năng truyền tải số.
+                        </div>
+                    </div>
+
+                    <div class="goal-card">
+                        <div class="goal-header">
+                            <div class="goal-title">
+                                <i class="fa-solid fa-briefcase"></i>
+                                <span>Mục tiêu Portfolio này</span>
+                            </div>
+                            <div class="counter-box" data-target="6">0<span>/6</span></div>
+                        </div>
+                        <div class="goal-body">
+                            Lưu trữ, chuẩn hóa và phản ánh đầy đủ năng lực thực thi số qua 6 bài tập lớn trong học kỳ, tạo dựng một bộ mặt học thuật trực tuyến chỉn chu trước thầy cô và nhà tuyển dụng.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+       PROJECT SECTION (TRANG DỰ ÁN)
+       ========================================== -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Trang Dự Án</h2>
+                <p class="section-desc">Tập hợp và trình bày các bài tập thành phần trong học phần.</p>
+            </div>
+
+            <div class="project-grid">
+                <!-- Bài 1 -->
+                <div class="project-card">
+                    <div class="project-banner">
+                        <span class="project-number">Bài tập 1</span>
+                        <i class="fa-solid fa-folder-tree"></i>
+                        <h4>Máy tính và các thiết bị ngoại vi</h4>
+                    </div>
+                    <div class="project-body">
+                        <span class="project-meta-task"><i class="fa-solid fa-code"></i> Thao tác tệp tin & Thư mục</span>
+                        <p class="project-desc">Trình bày cấu trúc thư mục lưu trữ học tập tối ưu khoa học và hệ thống quy tắc đặt tên tệp tin bài bản, kèm hình ảnh minh chứng thực tế cấu trúc đã thiết lập trên máy cá nhân.</p>
+                        
+                        <div class="project-input-group">
+                            <div class="input-title">
+                                Link sản phẩm
+                                <span class="badge-status" id="status-link-1" style="color: #059669;"><i class="fa-solid fa-circle-check"></i> Đã kết nối</span>
+                            </div>
+                            <div class="project-link-box">
+                                <input type="url" class="project-url-input" id="link-input-1" placeholder="Nhập liên kết bài tập" oninput="updateLinkStatus(1)" value="https://docs.google.com/document/d/1AyCl_T8hTx5Di3R1hDpXGMGHWeMlK5ac/edit?usp=sharing&ouid=116719085636747467992&rtpof=true&sd=true">
+                                <button class="btn-launch" id="btn-launch-1" onclick="openProjectLink(1)" title="Mở đường dẫn"><i class="fa-solid fa-external-link"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bài 2 -->
+                <div class="project-card">
+                    <div class="project-banner">
+                        <span class="project-number">Bài tập 2</span>
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <h4>Khai thác dữ liệu và thông tin</h4>
+                    </div>
+                    <div class="project-body">
+                        <span class="project-meta-task"><i class="fa-solid fa-circle-info"></i> Tìm kiếm học thuật</span>
+                        <p class="project-desc">Biên soạn báo cáo kết quả tìm kiếm thông tin học thuật đỉnh cao thông qua việc ứng dụng các toán tử tìm kiếm nâng cao (AND, OR, site:, filetype:) đi kèm bảng đánh giá uy tín nguồn tin khoa học.</p>
+                        
+                        <div class="project-input-group">
+                            <div class="input-title">
+                                Link sản phẩm
+                                <span class="badge-status" id="status-link-1" style="color: #059669;"><i class="fa-solid fa-circle-check"></i> Đã kết nối</span>
+                            </div>
+                            <div class="project-link-box">
+                                <input type="url" class="project-url-input" id="link-input-2" placeholder="Nhập liên kết bài tập" oninput="updateLinkStatus(2)" value="https://docs.google.com/document/d/1c19uulQ3opMJX53C6qP32ZtCZzQ_wZc4/edit?usp=sharing&ouid=116719085636747467992&rtpof=true&sd=true">
+                                <button class="btn-launch" id="btn-launch-2" onclick="openProjectLink(2)" title="Mở đường dẫn"><i class="fa-solid fa-external-link"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bài 3 -->
+                <div class="project-card">
+                    <div class="project-banner">
+                        <span class="project-number">Bài tập 3</span>
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <h4>Tổng quan về Trí tuệ nhân tạo</h4>
+                    </div>
+                    <div class="project-body">
+                        <span class="project-meta-task"><i class="fa-solid fa-brain"></i> Viết Prompt hiệu quả</span>
+                        <p class="project-desc">Bản tổng hợp phân tích trực quan so sánh cụ thể hiệu quả giữa Prompt cơ bản ban đầu và Prompt nâng cao được tối ưu theo công thức chuẩn hóa, kèm đối sánh đầu ra từ AI thực tế.</p>
+                        
+                        <div class="project-input-group">
+                            <div class="input-title">
+                                Link sản phẩm
+                                <span class="badge-status" id="status-link-1" style="color: #059669;"><i class="fa-solid fa-circle-check"></i> Đã kết nối</span>
+                            </div>
+                            <div class="project-link-box">
+                                <input type="url" class="project-url-input" id="link-input-3" placeholder="Nhập liên kết bài tập" oninput="updateLinkStatus(3)" value="https://docs.google.com/document/d/1fh37LXX5HO1N8SxYrjuB-S6EBUqfnyf5/edit?usp=sharing&ouid=116719085636747467992&rtpof=true&sd=true">
+                                <button class="btn-launch" id="btn-launch-3" onclick="openProjectLink(3)" title="Mở đường dẫn"><i class="fa-solid fa-external-link"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bài 4 -->
+                <div class="project-card">
+                    <div class="project-banner">
+                        <span class="project-number">Bài tập 4</span>
+                        <i class="fa-solid fa-users-gear"></i>
+                        <h4>Giao tiếp và hợp tác trực tuyến</h4>
+                    </div>
+                    <div class="project-body">
+                        <span class="project-meta-task"><i class="fa-solid fa-people-group"></i> Dự án nhóm & Cloud</span>
+                        <p class="project-desc">Minh chứng thuyết phục về quá trình sử dụng các nền tảng đám mây chia sẻ tài liệu và phần mềm lập kế hoạch, phân chia phân quyền quản trị đội ngũ làm việc trực tuyến nhịp nhàng.</p>
+                        
+                        <div class="project-input-group">
+                            <div class="input-title">
+                                Link sản phẩm
+                                <span class="badge-status" id="status-link-1" style="color: #059669;"><i class="fa-solid fa-circle-check"></i> Đã kết nối</span>
+                            </div>
+                            <div class="project-link-box">
+                                <input type="url" class="project-url-input" id="link-input-4" placeholder="Nhập liên kết bài tập " oninput="updateLinkStatus(4)" value="https://docs.google.com/document/d/1qyRougzc4YZSwZ-l3hs7ZJgzaZCySxtC/edit?usp=sharing&ouid=116719085636747467992&rtpof=true&sd=true">
+                                <button class="btn-launch" id="btn-launch-4" onclick="openProjectLink(4)" title="Mở đường dẫn"><i class="fa-solid fa-external-link"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bài 5 -->
+                <div class="project-card">
+                    <div class="project-banner">
+                        <span class="project-number">Bài tập 5</span>
+                        <i class="fa-solid fa-photo-film"></i>
+                        <h4>Sáng tạo nội dung số</h4>
+                    </div>
+                    <div class="project-body">
+                        <span class="project-meta-task"><i class="fa-solid fa-clapperboard"></i> Trí tuệ nhân tạo sáng tạo</span>
+                        <p class="project-desc">Trưng bày các tác phẩm truyền thông số đặc sắc (hình ảnh trực quan tinh tế, kịch bản hoặc video bài thuyết trình) có sự hỗ trợ đắc lực từ trí tuệ nhân tạo khởi tạo ý tưởng nhanh chóng.</p>
+                        
+                        <div class="project-input-group">
+                            <div class="input-title">
+                                Link sản phẩm
+                                <span class="badge-status" id="status-link-1" style="color: #059669;"><i class="fa-solid fa-circle-check"></i> Đã kết nối</span>
+                            </div>
+                            <div class="project-link-box">
+                                <input type="url" class="project-url-input" id="link-input-5" placeholder="Nhập liên kết bài tập " oninput="updateLinkStatus(5)" value="https://docs.google.com/document/d/1in9fZsao-KB5IT1DkCHBkuepC-QoEls2/edit?usp=sharing&ouid=116719085636747467992&rtpof=true&sd=true">
+                                <button class="btn-launch" id="btn-launch-5" onclick="openProjectLink(5)" title="Mở đường dẫn"><i class="fa-solid fa-external-link"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bài 6 -->
+                <div class="project-card">
+                    <div class="project-banner">
+                        <span class="project-number">Bài tập 6</span>
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <h4>An toàn và liêm chính học thuật</h4>
+                    </div>
+                    <div class="project-body">
+                        <span class="project-meta-task"><i class="fa-solid fa-user-shield"></i> AI có trách nhiệm</span>
+                        <p class="project-desc">Bản cam kết học tập vững vàng cùng bộ nguyên tắc ứng xử và khai thác AI văn minh, tuân thủ tuyệt đối chuẩn mực liêm chính khoa học dựa trên các nghiên cứu dẫn chứng cụ thể.</p>
+                        
+                        <div class="project-input-group">
+                            <div class="input-title">
+                                Link sản phẩm
+                                <span class="badge-status" id="status-link-1" style="color: #059669;"><i class="fa-solid fa-circle-check"></i> Đã kết nối</span>
+                            </div>
+                            <div class="project-link-box">
+                                <input type="url" class="project-url-input" id="link-input-6" placeholder="Nhập liên kết bài tập " oninput="updateLinkStatus(6)" value="https://docs.google.com/document/d/136pmKW_KcdR5EBhWW85QoY1D9LZxXvbQ/edit?usp=sharing&ouid=116719085636747467992&rtpof=true&sd=true">
+                                <button class="btn-launch" id="btn-launch-6" onclick="openProjectLink(6)" title="Mở đường dẫn"><i class="fa-solid fa-external-link"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+       SUMMARY SECTION (PHẦN TỔNG KẾT)
+       ========================================== -->
+    <section class="summary" id="summary">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Trang Tổng Kết</h2>
+                <p class="section-desc">Báo cáo đánh giá cuối kỳ về hành trình rèn luyện, trưởng thành tư duy công nghệ thông qua việc hoàn thiện hệ thống Digital Portfolio này.</p>
+            </div>
+
+            <div class="summary-card">
+                <div class="summary-header">
+                    <div class="summary-badge-icon">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <div class="summary-header-text">
+                        <h3>Tổng kết hành trình số</h3>
+                        <p>Học phần: Nhập môn Công nghệ số và Ứng dụng Trí tuệ nhân tạo | K70 UET-VNU</p>
+                    </div>
+                </div>
+
+                <div class="summary-grid">
+                    <!-- Trải nghiệm & Cảm nhận -->
+                    <div class="summary-item">
+                        <div class="summary-item-title">
+                            <i class="fa-solid fa-heart"></i>
+                            <span>Trải nghiệm cá nhân</span>
+                        </div>
+                        <ul class="summary-item-list">
+                            <li>Cảm nhận sâu sắc về tính ứng dụng vượt bậc của công nghệ số hóa dữ liệu trong cuộc sống học tập hiện đại.</li>
+                            <li>Tự hào khi tự tay thiết lập một trang Portfolio số hóa gọn gàng giúp nhìn nhận lại toàn bộ chặng đường đã qua một cách khoa học.</li>
+                            <li>Nhận thức rõ tầm quan trọng của việc có một "ngôi nhà trực tuyến" để lưu giữ thành tựu.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Kiến thức & Kỹ năng -->
+                    <div class="summary-item">
+                        <div class="summary-item-title">
+                            <i class="fa-solid fa-key"></i>
+                            <span>Kiến thức cốt lõi</span>
+                        </div>
+                        <ul class="summary-item-list">
+                            <li>Làm chủ kỹ thuật thiết lập cấu trúc tệp tin tối ưu và phương pháp viết Prompt định hình đầu ra chính xác từ các mô hình AI.</li>
+                            <li>Sử dụng thông thạo các toán tử tìm kiếm học thuật chuyên sâu và đánh giá nguồn tin chuẩn xác.</li>
+                            <li>Phát triển tư duy làm việc nhóm trực tuyến đồng bộ và nguyên tắc liêm chính học thuật hiện đại.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Tâm đắc & Thách thức -->
+                    <div class="summary-item">
+                        <div class="summary-item-title">
+                            <i class="fa-solid fa-lightbulb"></i>
+                            <span>Tâm đắc & Thách thức</span>
+                        </div>
+                        <ul class="summary-item-list">
+                            <li><strong>Tâm đắc nhất:</strong> Biết cách phối hợp sức mạnh của AI một cách thông minh, biến nó thành trợ lý học tập cá nhân thay vì phụ thuộc thụ động.</li>
+                            <li><strong>Thách thức lớn:</strong> Cân đối giữa việc ứng dụng AI sáng tạo nội dung nhanh và việc giữ vững tính liêm chính, bảo hộ bản quyền học thuật đúng quy chuẩn.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+       CONTACT SECTION (LIÊN HỆ TRỰC TIẾP)
+       ========================================== -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Liên Hệ</h2>
+                <p class="section-desc">Bạn có ý tưởng dự án mạng hoặc muốn trao đổi về Trí tuệ nhân tạo? Lựa chọn kênh liên hệ nhanh nhất bên dưới nhé.</p>
+            </div>
+
+            <div class="contact-wrapper">
+                <div class="contact-info-panel">
+                    <h3>Trò chuyện trực tuyến</h3>
+                    <p>Mình luôn sẵn sàng thảo luận và hợp tác nghiên cứu trong các lĩnh vực Mạng máy tính, Hạ tầng số, Điện toán đám mây và ứng dụng AI.</p>
+                    <p>Hãy chọn một phương thức kết nối thuận tiện nhất với bạn ở bên cạnh. Mình thường trực tuyến và phản hồi phản hồi cực nhanh trên các nền tảng mạng xã hội phổ biến này.</p>
+                    
+                    <div style="margin-top: 1.5rem; padding: 1.25rem; background-color: var(--primary-light); border-radius: 1rem; border: 1px dashed var(--primary-color); color: var(--primary-color);">
+                        <p style="font-weight: 600; font-size: 0.9rem; margin-bottom: 0.25rem;"><i class="fa-solid fa-bolt"></i> Phản hồi nhanh hơn</p>
+                        <span style="font-size: 0.8rem; opacity: 0.9;">Nhắn tin qua Zalo hoặc Gmail sẽ nhận được câu trả lời từ mình chỉ sau vài phút!</span>
+                    </div>
+                </div>
+
+                <div class="contact-channels-grid">
+                    <!-- Kênh Zalo -->
+                    <div class="channel-card zalo-channel">
+                        <div class="channel-icon">
+                            <i class="fa-solid fa-comments"></i>
+                        </div>
+                        <div class="channel-info">
+                            <h4>Zalo Cá Nhân</h4>
+                            <p>Số điện thoại: 0394651078</p>
+                            <a href="https://zalo.me/0394651078" target="_blank" class="btn-channel">
+                                <i class="fa-solid fa-comment-dots"></i> Nhắn tin Zalo
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <!-- Kênh Gọi Điện -->
+                    <div class="channel-card phone-channel">
+                        <div class="channel-icon">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div class="channel-info">
+                            <h4>Gọi Trực Tiếp</h4>
+                            <p>Di động: 0394651078</p>
+                            <a href="tel:0394651078" class="btn-channel">
+                                <i class="fa-solid fa-phone-volume"></i> Liên hệ với mình
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Kênh Email -->
+                    <div class="channel-card email-channel">
+                        <div class="channel-icon">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div class="channel-info">
+                            <h4>Gửi Thư Điện Tử</h4>
+                            <p>nhan24092007az@gmail.com</p>
+                            <a href="mailto:nhan24092007az@gmail.com" class="btn-channel">
+                                <i class="fa-solid fa-envelope-open-text"></i> Gửi Email
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+       FOOTER
+       ========================================== -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <i class="fa-solid fa-graduation-cap"></i> <span>Lê Thành Nhân</span>
+            </div>
+            <p class="footer-desc">Digital Portfolio lưu trữ thành tích học tập học phần nhập môn kỹ thuật số. Đại học Công Nghệ - ĐHQGHN.</p>
+            
+            <div class="footer-links">
+                <a href="#hero" class="footer-link">Trang chủ</a>
+                <a href="#about" class="footer-link">Về tôi</a>
+                <a href="#projects" class="footer-link">Dự án</a>
+                <a href="#summary" class="footer-link">Tổng kết</a>
+            </div>
+
+            <p class="copyright">&copy; 2026 Lê Thành Nhân | Thiết kế học thuật độc bản bởi UET.A11.</p>
+        </div>
+    </footer>
+
+    <!-- ==========================================
+       SCRIPT CHẠY CHỨC NĂNG (JAVASCRIPT)
+       ========================================== -->
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const bodyElement = document.body;
+
+        if (bodyElement) {
+            const savedTheme = localStorage.getItem('portfolio-theme') || 'light';
+            bodyElement.setAttribute('data-theme', savedTheme);
+        }
+
+        if (themeToggleBtn && bodyElement) {
+            themeToggleBtn.addEventListener('click', () => {
+                const currentTheme = bodyElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                bodyElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('portfolio-theme', newTheme);
+            });
+        }
+
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (header) {
+                if (window.scrollY > 50) {
+                    header.classList.add('sticky');
+                } else {
+                    header.classList.remove('sticky');
+                }
+            }
+        });
+
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                if (navMenu.classList.contains('active')) {
+                    menuToggle.classList.remove('fa-bars');
+                    menuToggle.classList.add('fa-xmark');
+                } else {
+                    menuToggle.classList.remove('fa-xmark');
+                    menuToggle.classList.add('fa-bars');
+                }
+            });
+        }
+
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navMenu && menuToggle) {
+                    navMenu.classList.remove('active');
+                    menuToggle.classList.remove('fa-xmark');
+                    menuToggle.classList.add('fa-bars');
+                }
+            });
+        });
+
+        function startCounterAnimation() {
+            const counters = document.querySelectorAll('.counter-box');
+            const speed = 100;
+
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const spanElem = counter.querySelector('span');
+                const suffix = spanElem ? spanElem.outerHTML : '';
+                let count = 0;
+                
+                const updateCount = () => {
+                    const increment = Math.ceil(target / speed);
+                    if (count < target) {
+                        count += increment;
+                        if (count > target) count = target;
+                        counter.innerHTML = count + suffix;
+                        setTimeout(updateCount, 15);
+                    } else {
+                        counter.innerHTML = target + suffix;
+                    }
+                };
+                updateCount();
+            });
+        }
+
+        let animated = false;
+        window.addEventListener('scroll', () => {
+            const aboutSection = document.getElementById('about');
+            if (aboutSection) {
+                const position = aboutSection.getBoundingClientRect();
+                if (position.top < window.innerHeight && !animated) {
+                    startCounterAnimation();
+                    animated = true;
+                }
+            }
+        });
+
+        const sections = document.querySelectorAll('section');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (current && link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            for (let i = 1; i <= 6; i++) {
+                const savedUrl = localStorage.getItem(`uet-project-link-${i}`);
+                const inputElement = document.getElementById(`link-input-${i}`);
+                if (savedUrl && inputElement) {
+                    inputElement.value = savedUrl;
+                    updateLinkStatus(i);
+                }
+            }
+        });
+
+        function updateLinkStatus(id) {
+            const input = document.getElementById(`link-input-${id}`);
+            const statusSpan = document.getElementById(`status-link-${id}`);
+            const btnLaunch = document.getElementById(`btn-launch-${id}`);
+
+            if (!input || !statusSpan || !btnLaunch) return;
+
+            const value = input.value.trim();
+
+            if (value === "") {
+                statusSpan.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Chờ liên kết';
+                statusSpan.style.color = 'var(--text-muted)';
+                btnLaunch.disabled = true;
+                localStorage.removeItem(`uet-project-link-${id}`);
+            } else {
+                if (value.startsWith('http://') || value.startsWith('https://')) {
+                    statusSpan.innerHTML = '<i class="fa-solid fa-circle-check"></i> Sẵn sàng';
+                    statusSpan.style.color = '#10b981';
+                    btnLaunch.disabled = false;
+                    localStorage.setItem(`uet-project-link-${id}`, value);
+                } else {
+                    statusSpan.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Sai định dạng';
+                    statusSpan.style.color = '#ef4444';
+                    btnLaunch.disabled = true;
+                }
+            }
+        }
+
+        function openProjectLink(id) {
+            const input = document.getElementById(`link-input-${id}`);
+            if (input) {
+                const url = input.value.trim();
+                if (url) {
+                    window.open(url, '_blank');
+                }
+            }
+        }
+    </script>
+</body>
+</html>
